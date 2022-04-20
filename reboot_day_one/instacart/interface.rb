@@ -30,7 +30,6 @@ while answer != "q"
   puts "What do you want?"
   user_input = gets.chomp.downcase.strip.to_sym
 
-
   if store.include?(user_input)
     basket << { "#{user_input}": store[user_input] }
 
