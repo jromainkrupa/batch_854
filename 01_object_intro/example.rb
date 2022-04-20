@@ -15,3 +15,12 @@ end
 
 puts full_name("   JeaN", " KRuPa        ")
 # => Jean Krupa
+
+
+green_car = Car.new("green")
+
+green_car.engine_started = true
+
+green_car.change_owner
+
+green_car.save_csv

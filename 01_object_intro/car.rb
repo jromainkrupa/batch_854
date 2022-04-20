@@ -25,6 +25,19 @@ class Car
   #   ap toto
   # end
 
+  def sign_up
+
+    first_name = "...."
+
+    ....
+    validate_phone_number
+
+    ....
+
+
+
+  end
+
   def start_engine
     toto = "toto"
     @engine_started = true
@@ -32,6 +45,11 @@ class Car
 
   def engine_started?
     @engine_started
+  end
+
+  def add
+    chris.. << new item
+    save_csv
   end
 
 
@@ -43,7 +61,13 @@ class Car
     # fancy stuff
   end
 
+  def save_csv
+
+  end
+
   def validate_phone_number
   end
+
+  def change_admin
 
 end
