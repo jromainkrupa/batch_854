@@ -35,7 +35,7 @@ class Cookbook
       description = row[1]
       status = row[2] == "true"
       rating = row[3].to_f
-      prep_time = row[4].to_i
+      prep_time = row[4]
       recipe = Recipe.new(name: name, description: description, status: status, rating: rating, prep_time: prep_time)
       @recipes << recipe # recipe est une instance de recette
     end

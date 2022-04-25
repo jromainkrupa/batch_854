@@ -29,7 +29,7 @@ class ScraperService
       prep_time_el = container.search(".recipe-meta-item").find do |item|
         item.text.strip.match?(/prep:/i)
       end
-      prep_time = prep_time_el.nil? ? "_" : prep_time_el.text.strip.match(/(\d{2}|\d{1})/)[1]
+      prep_time = prep_time_el.nil? ? "_" : prep_time_el.text.strip.gsub(/prep:/, "")
 
       results << Recipe.new(name: name, description: description, rating: rating, prep_time: prep_time)
     end
