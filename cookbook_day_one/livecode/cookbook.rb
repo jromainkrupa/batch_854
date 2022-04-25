@@ -23,13 +23,20 @@ class Cookbook
     save_csv
   end
 
+  def update
+    save_csv
+  end
+
   private
 
   def load_csv
     CSV.foreach(@filepath) do |row|
       name = row[0]
       description = row[1]
-      recipe = Recipe.new(name, description)
+      status = row[2] == "true"
+      rating = row[3].to_f
+      prep_time = row[4].to_i
+      recipe = Recipe.new(name: name, description: description, status: status, rating: rating, prep_time: prep_time)
       @recipes << recipe # recipe est une instance de recette
     end
   end
@@ -37,7 +44,7 @@ class Cookbook
   def save_csv
     CSV.open(@filepath, "wb") do |csv|
       @recipes.each do |recipe|
-        csv << [recipe.name, recipe.description]
+        csv << [recipe.name, recipe.description, recipe.status?, recipe.rating, recipe.prep_time]
       end
     end
   end
