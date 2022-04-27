@@ -16,4 +16,8 @@ class Employee
   def rider?
     @role == "rider"
   end
+
+  def to_s
+    "#{employee.id} #{employee.username} #{employee.role}"
+  end
 end

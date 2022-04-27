@@ -18,13 +18,13 @@ class EmployeeRepository < RecordRepository
   end
 
   def headers
-    ["id", "username", "password"]
+    ["id", "username", "password", "role"]
   end
 
   undef save_csv
 
 
   def record_to_row(employee)
-    [employee.id, employee.name, employee.price]
+    [employee.id, employee.name, employee.price, employee.role]
   end
 end

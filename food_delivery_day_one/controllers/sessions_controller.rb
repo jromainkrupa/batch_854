@@ -13,7 +13,8 @@ class SessionsController
     # 2. Demander un password
     password = @session_view.ask_for("password")
     # 3. verifier que le couple username password marche
-    return true if password_and_username_matches?(username, password)
+    employee = @employee_repository.find_by_username(username)
+    return employee if employee.password == password
     # 4. si le couple ne marche pas, on demande de recommencer
     @session_view.wrong_credentials
     sign_in
@@ -22,7 +23,6 @@ class SessionsController
   private
 
   def password_and_username_matches?(username, password)
-    employee = @employee_repository.find_by_username(username)
     return employee.password == password unless employee.nil?
     false
   end

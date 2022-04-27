@@ -1,2 +1,4 @@
-id,username,password
-1,jeanro,azerty
+id,username,password,role
+1,jeanro,azerty,rider
+2,toufik,azerty,manager
+3,toto,azerty,rider
