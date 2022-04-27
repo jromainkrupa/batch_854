@@ -1,12 +1,15 @@
 class Router
-  def initialize(meals_controller, customers_controller)
+  def initialize(meals_controller, customers_controller, session_controller)
     @meals_controller = meals_controller
     @customers_controller = customers_controller
     @run = true
+    @session_controller = session_controller
   end
 
   def run
-    while @run
+    # demander a l'employee de se sign in ??
+    sign_in = @session_controller.sign_in
+    while @run && sign_in
       print_menu
       process(gets.chomp)
     end

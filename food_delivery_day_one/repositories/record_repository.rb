@@ -1,40 +1,40 @@
 class RecordRepository
   def initialize(filepath)
     # TDO
-    @items = []
+    @elements = []
     @filepath = filepath
     load_csv if File.exists?(filepath)
   end
 
   def all
-    @items
+    @elements
   end
 
-  def create(item)
-    item.id = @next_id
+  def create(element)
+    element.id = @next_id
     @next_id += 1
-    @items << item
+    @elements << element
     save_csv
   end
 
   def find(id)
-    @items.find { |item| item.id == id }
+    @elements.find { |element| element.id == id }
   end
 
   private
 
   def load_csv
     CSV.foreach(@filepath, headers: :first_row, header_converters: :symbol) do |row|
-      @items << row_to_record(row)
+      @elements << row_to_record(row)
     end
-    @next_id = @items.empty? ? 1 : @items.count + 1
+    @next_id = @elements.empty? ? 1 : @elements.count + 1
   end
 
   def save_csv
     CSV.open(@filepath, "wb") do |csv|
       csv << headers
-      @items.each do |item|
-        csv << record_to_row(item)
+      @elements.each do |element|
+        csv << record_to_row(element)
       end
     end
   end
